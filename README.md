@@ -11,36 +11,70 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# Sentisis Frontend Challenge
 
-### `npm test`
+Create app with React and Typescript to:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Show a table with a list of objects (tickets/events).
+  created with: `npx create-react-app sentisis-challenge  --template typescript`
 
-### `npm run build`
+from the API we receibe objects like this `[
+{
+"id": "1a",
+"title": "Johnny Cash tribute",
+"type": "show",
+"releaseDate": 1555970400000,
+"description": "Mauris finibus commodo malesuada. Vestibulum porttitor, massa a gravida faucibus, augue velit tristique libero, sit amet scelerisque tortor erat ut velit. Praesent orci tellus, aliquam id felis vitae, laoreet facilisis.",
+"price": 15,
+"currency": "euro"
+},]`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Explanation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Followed by the data fetching, the ticket is modified so we can change the quantity, and we sort them by release date. While the fetching is performed, a loading state is shown. An update quantity function was created so that when clicking the unit selector buttons, the state changes and the data is stored locally. The tickets are mapped, and the required info is displayed. Clicking a row will display a modal showing the required information. Within the modal, we can add a quantity.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Acceptance criteria**:
 
-### `npm run eject`
+        1- The table has 5 columns: name, type, release date, unit selector and price.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+        2- The table is sorted by release date (most recent first).
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+        3- The unit selector must be a number type input. The button + (add object) must be on the left side of the selector, and the button - (remove object), on the right side.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+        4- When hitting the unit selector buttons, the number of objects should get updated.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+        5- When refreshing, the data are retained (the number of objects ordered is not reset).
 
-## Learn More
+- Show a modal window when clicking each object row.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  **Acceptance criteria**:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+        1- The modal window shows the name, type and description.
+
+        2- Besides the information, it must have an "Add" button, so that when clicking it, the modal closes and the unit selector of the list is increased in 1 unit.
+
+- When there is at least one unit of an object, a button "Cart" must be shown under the list.
+
+  **Acceptance criteria**:
+
+        1- Show another modal window with the summary of the objects ordered.
+
+        2- The summary must contain a list with the object name, number of units and total price.
+
+        3- The list is sorted from highest to lowest unit number.
+
+        4- The total price must be shown at the end of the list.
+
+        5- To exit the modal, it is necessary to click outside the modal.
+
+- Finally: Add some unit tests and e2e tests to validate the whole process.
+
+> This is the data [endpoint](https://my-json-server.typicode.com/davidan90/demo/tickets).
+>
+> React and Typescript are the only mandatory libraries needed.
+>
+> Add a README explaining the decisions made and how to run the project.
+>
+> There is no specific design, feel free to style the app as you want (using css, sass or styled-c components).
+>
+> Return it at your convenience, we appreciate your time.
